@@ -12,7 +12,8 @@ public class PersianDateTime implements Comparable<PersianDateTime>{
     
     private PersianDateTime(LocalDateTime dateTime) {
         this.dateTime = Objects.requireNonNull(dateTime, "cannot input null value");
-        initialize();
+        this.date = PersianDate.ofLocalDate(dateTime.toLocalDate());
+        this.time = dateTime.toLocalTime();
     }
     
     public static PersianDateTime now() {
@@ -37,11 +38,6 @@ public class PersianDateTime implements Comparable<PersianDateTime>{
     
     public LocalTime time() {
         return time;
-    }
-    
-    private void initialize() {
-        this.date = PersianDate.ofLocalDate(dateTime.toLocalDate());
-        this.time = dateTime.toLocalTime();
     }
     
     @Override

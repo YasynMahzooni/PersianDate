@@ -5,7 +5,7 @@ package cby.date.persian;
  */
 public final class DateConverter {
 
-    private DateWrapper() {
+    private DateConverter() {
         // Prevent instantiation
     }
 

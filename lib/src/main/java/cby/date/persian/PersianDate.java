@@ -13,7 +13,10 @@ public final class PersianDate implements Comparable<PersianDate> {
     
     private PersianDate(LocalDate date) {
         this.date = Objects.requireNonNull(date, "cannot input null value");
-        initialize();
+        DateHolder dh = DateConverter.gregorianToPersian(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+        this.year = dh.year();
+        this.month = dh.month();
+        this.day = dh.day();
     }
     
     public static PersianDate now() {
@@ -71,13 +74,6 @@ public final class PersianDate implements Comparable<PersianDate> {
     
     public int dateId() {
         return year * 10000 + month * 100 + day;
-    }
-    
-    private void initialize() {
-        DateHolder dh = DateConverter.gregorianToPersian(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
-        this.year = dh.year();
-        this.month = dh.month();
-        this.day = dh.day();
     }
     
     @Override
